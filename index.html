@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Formulário de Cadastro - Carteirinha de Idoso (WhatsApp)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #e2e8f0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            padding: 2rem 1rem;
+            color: #0f172a;
+        }
+
+        .form-container {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            padding: 2rem 1.5rem 2rem 1.5rem;
+        }
+
+        .form-header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e9eef3;
+            padding-bottom: 1rem;
+        }
+
+        .form-header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            background: linear-gradient(135deg, #1e3c72, #2b4c7c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .question {
+            margin-bottom: 2.2rem;
+        }
+
+        .question-number {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #3b82f6;
+            background: #eff6ff;
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            margin-bottom: 0.75rem;
+        }
+
+        .question-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #0a2540;
+        }
+
+        .optional-badge {
+            font-size: 0.75rem;
+            font-weight: normal;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            margin-left: 0.6rem;
+            vertical-align: middle;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            font-size: 1rem;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 20px;
+            background: white;
+            transition: 0.2s ease;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+        }
+
+        .radio-group {
+            background: #f8fafc;
+            padding: 0.8rem 1rem;
+            border-radius: 24px;
+            border: 1px solid #eef2f6;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+        }
+
+        .radio-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .radio-option input {
+            width: 20px;
+            height: 20px;
+            accent-color: #2563eb;
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .radio-option label {
+            font-size: 1rem;
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        .submit-btn {
+            background: #25D366;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 40px;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: 0.2s;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            background: #128C7E;
+            transform: scale(0.98);
+        }
+
+        .cookie-banner {
+            background: #f1f5f9;
+            margin-top: 2rem;
+            padding: 1rem 1.2rem;
+            border-radius: 24px;
+            font-size: 0.8rem;
+            color: #334155;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .cookie-banner a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .cookie-banner button {
+            background: none;
+            border: none;
+            color: #0f2b3d;
+            font-weight: 600;
+            margin-left: 0.5rem;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .loading-message {
+            background: #fef9c3;
+            color: #854d0e;
+            padding: 1rem;
+            border-radius: 28px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .success-message {
+            background: #dcfce7;
+            color: #166534;
+            padding: 1rem;
+            border-radius: 28px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: 0;
+            height: 1px;
+            background: #eef2f6;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <div class="form-card">
+        <div class="form-header">
+            <h1>📋 Formulário de Cadastro</h1>
+        </div>
+
+        <div id="loadingMessage" class="loading-message">
+            ⏳ Redirecionando para o WhatsApp... Aguarde um momento.
+        </div>
+
+        <form id="cadastroForm">
+            <!-- 1. Nome Completo -->
+            <div class="question">
+                <div class="question-number">1.</div>
+                <div class="question-text">Nome Completo</div>
+                <input type="text" name="nomeCompleto" placeholder="Digite seu nome completo" required>
+            </div>
+
+            <!-- 2. E-mail (Opcional) -->
+            <div class="question">
+                <div class="question-number">2.</div>
+                <div class="question-text">
+                    Endereço de E-mail
+                    <span class="optional-badge">Opcional</span>
+                </div>
+                <input type="email" name="email" placeholder="seu@email.com">
+            </div>
+
+            <!-- 3. Número de WhatsApp -->
+            <div class="question">
+                <div class="question-number">3.</div>
+                <div class="question-text">Número de WhatsApp</div>
+                <input type="tel" name="whatsapp" placeholder="(62) 99204-7832" required>
+            </div>
+
+            <!-- 4. Tem interesse em adquirir? -->
+            <div class="question">
+                <div class="question-number">4.</div>
+                <div class="question-text">Tem interesse em adquirir?</div>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="interesse" value="Sim - Tenho interesse" required> 
+                        <span>✅ Sim, tenho interesse</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="interesse" value="Não tenho interesse"> 
+                        <span>❌ Não tenho interesse</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="interesse" value="Talvez / Estou pensando"> 
+                        <span>🤔 Talvez / Estou pensando</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 5. Já adquiriu alguma vez a carteirinha de idoso? -->
+            <div class="question">
+                <div class="question-number">5.</div>
+                <div class="question-text">Já adquiriu alguma vez a carteirinha de idoso?</div>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="jaAdquiriu" value="Sim" required> 
+                        <span>Sim</span>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="jaAdquiriu" value="Não"> 
+                        <span>Não</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 6. Qual é a sua idade? -->
+            <div class="question">
+                <div class="question-number">6.</div>
+                <div class="question-text">Qual é a sua idade?</div>
+                <select name="idade" required>
+                    <option value="" disabled selected>Selecione sua faixa etária</option>
+                    <option value="Menos de 50 anos">Menos de 50 anos</option>
+                    <option value="50 a 59 anos">50 a 59 anos</option>
+                    <option value="60 a 69 anos">60 a 69 anos</option>
+                    <option value="70 anos ou mais">70 anos ou mais</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                📱 Enviar para o WhatsApp
+            </button>
+        </form>
+
+        <!-- Cookie Consent -->
+        <div class="cookie-banner" id="cookieBanner">
+            🍪 Nós usamos cookies para personalizar sua experiência. 
+            Você pode alterar suas preferências a qualquer momento, mas saiba que bloquear alguns cookies pode afetar sua experiência e nossos serviços. 
+            <a href="#" id="cookiePolicyLink">Saiba mais em nossa Política de Cookies</a>.
+            <button id="acceptCookiesBtn">Aceitar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Cookie banner
+        const cookieBanner = document.getElementById('cookieBanner');
+        const acceptBtn = document.getElementById('acceptCookiesBtn');
+        const policyLink = document.getElementById('cookiePolicyLink');
+
+        if (localStorage.getItem('cookiesAccepted') === 'true') {
+            if (cookieBanner) cookieBanner.style.display = 'none';
+        }
+
+        acceptBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieBanner.style.display = 'none';
+            const msg = document.createElement('div');
+            msg.innerText = '✅ Preferências de cookies salvas.';
+            msg.style.position = 'fixed';
+            msg.style.bottom = '20px';
+            msg.style.left = '20px';
+            msg.style.background = '#1f2937';
+            msg.style.color = 'white';
+            msg.style.padding = '8px 16px';
+            msg.style.borderRadius = '40px';
+            msg.style.fontSize = '0.8rem';
+            msg.style.zIndex = '999';
+            document.body.appendChild(msg);
+            setTimeout(() => msg.remove(), 2000);
+        });
+
+        policyLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('📄 Política de Cookies: Utilizamos cookies para melhorar sua experiência. Você pode gerenciar suas preferências no seu navegador.');
+        });
+
+        // FORMULÁRIO COM ENVIO PARA O WHATSAPP
+        const form = document.getElementById('cadastroForm');
+        const loadingDiv = document.getElementById('loadingMessage');
+
+        // SEU NÚMERO ATUALIZADO: +55 62992047832
+        // Usamos apenas os números (sem + e sem espaços) para o link do WhatsApp
+        const whatsappNumber = '5562992047832';  // Código do país + DDD + número
+        
+        // Versão alternativa apenas com 62992047832 (funciona também)
+        // const whatsappNumber = '62992047832';
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Capturar todos os dados
+            const nome = form.querySelector('input[name="nomeCompleto"]').value.trim();
+            const email = form.querySelector('input[name="email"]').value.trim();
+            const whatsapp = form.querySelector('input[name="whatsapp"]').value.trim();
+            const interesseRadio = form.querySelector('input[name="interesse"]:checked');
+            const jaAdquiriuRadio = form.querySelector('input[name="jaAdquiriu"]:checked');
+            const idade = form.querySelector('select[name="idade"]').value;
+
+            // Validações
+            if (!nome) {
+                alert('❌ Por favor, preencha o Nome Completo.');
+                return;
+            }
+            if (!whatsapp) {
+                alert('❌ Por favor, informe o número de WhatsApp.');
+                return;
+            }
+            if (!interesseRadio) {
+                alert('❌ Selecione se tem interesse em adquirir a carteirinha.');
+                return;
+            }
+            if (!jaAdquiriuRadio) {
+                alert('❌ Responda se já adquiriu a carteirinha de idoso alguma vez.');
+                return;
+            }
+            if (!idade || idade === '') {
+                alert('❌ Selecione a sua faixa etária.');
+                return;
+            }
+
+            // Montar a mensagem formatada para enviar ao WhatsApp
+            const interesse = interesseRadio.value;
+            const jaAdquiriu = jaAdquiriuRadio.value;
+
+            let mensagem = "📋 *NOVO CADASTRO - CARTEIRINHA DE IDOSO* 📋\n\n";
+            mensagem += "👤 *Nome:* " + nome + "\n";
+            mensagem += "📧 *E-mail:* " + (email ? email : "Não informado") + "\n";
+            mensagem += "📱 *WhatsApp:* " + whatsapp + "\n";
+            mensagem += "❓ *Interesse em adquirir:* " + interesse + "\n";
+            mensagem += "🆔 *Já adquiriu antes:* " + jaAdquiriu + "\n";
+            mensagem += "🎂 *Idade:* " + idade + "\n\n";
+            mensagem += "🔹 *Enviado automaticamente pelo formulário* 🔹";
+            mensagem += "\n\n📌 *Responda esta mensagem para dar continuidade ao atendimento*";
+
+            // Codificar a mensagem para URL
+            const mensagemCodificada = encodeURIComponent(mensagem);
+            
+            // Criar o link do WhatsApp com seu número
+            const whatsappLink = `https://wa.me/${whatsappNumber}?text=${mensagemCodificada}`;
+            
+            // Mostrar mensagem de loading/redirecionamento
+            loadingDiv.style.display = 'block';
+            
+            // Pequeno delay para o usuário ver o carregamento, depois redirecionar
+            setTimeout(() => {
+                // Abrir o WhatsApp em uma nova aba/janela
+                window.open(whatsappLink, '_blank');
+                loadingDiv.style.display = 'none';
+                
+                // Mostrar mensagem de sucesso
+                const successDiv = document.createElement('div');
+                successDiv.className = 'success-message';
+                successDiv.innerHTML = '✅ Redirecionado para o WhatsApp! Envie a mensagem para concluir o cadastro. 📱';
+                
+                const oldMsg = document.querySelector('.success-message');
+                if (oldMsg && oldMsg !== successDiv) oldMsg.remove();
+                
+                form.insertAdjacentElement('beforebegin', successDiv);
+                
+                // Limpar formulário após envio (opcional)
+                form.reset();
+                
+                // Remover mensagem após 8 segundos
+                setTimeout(() => {
+                    if (successDiv && successDiv.remove) successDiv.remove();
+                }, 8000);
+                
+            }, 800);
+        });
+    })();
+</script>
+</body>
+</html>
