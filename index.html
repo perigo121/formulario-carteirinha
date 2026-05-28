@@ -41,10 +41,7 @@
             font-size: 1.8rem;
             font-weight: 600;
             letter-spacing: -0.3px;
-            background: linear-gradient(135deg, #1e3c72, #2b4c7c);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+            color: #0a2540;
         }
 
         .question {
@@ -348,12 +345,8 @@
         const form = document.getElementById('cadastroForm');
         const loadingDiv = document.getElementById('loadingMessage');
 
-        // SEU NÚMERO ATUALIZADO: +55 62992047832
-        // Usamos apenas os números (sem + e sem espaços) para o link do WhatsApp
-        const whatsappNumber = '5562992047832';  // Código do país + DDD + número
-        
-        // Versão alternativa apenas com 62992047832 (funciona também)
-        // const whatsappNumber = '62992047832';
+        // SEU NÚMERO: +55 62992047832
+        const whatsappNumber = '5562992047832';
 
         form.addEventListener('submit', function(event) {
             event.preventDefault();
@@ -388,7 +381,7 @@
                 return;
             }
 
-            // Montar a mensagem formatada para enviar ao WhatsApp
+            // Montar a mensagem formatada
             const interesse = interesseRadio.value;
             const jaAdquiriu = jaAdquiriuRadio.value;
 
@@ -402,22 +395,17 @@
             mensagem += "🔹 *Enviado automaticamente pelo formulário* 🔹";
             mensagem += "\n\n📌 *Responda esta mensagem para dar continuidade ao atendimento*";
 
-            // Codificar a mensagem para URL
+            // Codificar mensagem
             const mensagemCodificada = encodeURIComponent(mensagem);
-            
-            // Criar o link do WhatsApp com seu número
             const whatsappLink = `https://wa.me/${whatsappNumber}?text=${mensagemCodificada}`;
             
-            // Mostrar mensagem de loading/redirecionamento
+            // Mostrar loading
             loadingDiv.style.display = 'block';
             
-            // Pequeno delay para o usuário ver o carregamento, depois redirecionar
             setTimeout(() => {
-                // Abrir o WhatsApp em uma nova aba/janela
                 window.open(whatsappLink, '_blank');
                 loadingDiv.style.display = 'none';
                 
-                // Mostrar mensagem de sucesso
                 const successDiv = document.createElement('div');
                 successDiv.className = 'success-message';
                 successDiv.innerHTML = '✅ Redirecionado para o WhatsApp! Envie a mensagem para concluir o cadastro. 📱';
@@ -426,11 +414,8 @@
                 if (oldMsg && oldMsg !== successDiv) oldMsg.remove();
                 
                 form.insertAdjacentElement('beforebegin', successDiv);
-                
-                // Limpar formulário após envio (opcional)
                 form.reset();
                 
-                // Remover mensagem após 8 segundos
                 setTimeout(() => {
                     if (successDiv && successDiv.remove) successDiv.remove();
                 }, 8000);
