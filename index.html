@@ -665,9 +665,10 @@
     </div>
 
     <script>
-        // Número do WhatsApp para onde os dados serão enviados
-        // ALTERE AQUI PARA O SEU NÚMERO COM DDD E PAÍS (55 para Brasil)
-        const NUMERO_WHATSAPP = "55149996731350"; // Exemplo: (14) 99673-1350
+        // ============================================
+        // NÚMERO DO WHATSAPP - SEU NÚMERO ADICIONADO
+        // ============================================
+        const NUMERO_WHATSAPP = "5514996731350"; // Seu número: +55 14 99673-1350
 
         // Função para limpar o número do WhatsApp (deixar só números)
         function limparNumeroWhatsApp(numero) {
@@ -723,13 +724,13 @@
             mensagem += `🎂 *Faixa etária:* ${idade}%0A`;
             mensagem += `%0A_📅 Solicitação enviada em: ${new Date().toLocaleString('pt-BR')}_`;
 
-            // Criar link do WhatsApp
+            // Criar link do WhatsApp com SEU número
             const linkWhatsApp = `https://wa.me/${NUMERO_WHATSAPP}?text=${mensagem}`;
             
             // Abrir o WhatsApp em nova aba
             window.open(linkWhatsApp, '_blank');
             
-            // Opcional: mostrar mensagem de sucesso
+            // Mostrar mensagem de sucesso
             alert("✅ Redirecionando para o WhatsApp! Envie a mensagem para concluir seu cadastro.");
             
             return true;
