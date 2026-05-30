@@ -38,7 +38,6 @@
             padding: 20px;
         }
 
-        /* Header / Hero - BRANCO */
         .hero {
             background: #ffffff;
             border-radius: 24px;
@@ -104,6 +103,108 @@
         }
         .btn-form:hover {
             background-color: #219a52;
+        }
+
+        /* Estilos do Formulário */
+        .form-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #eef2f6;
+        }
+
+        .form-card h2 {
+            color: #1b4f72;
+            font-size: 1.8rem;
+            margin-bottom: 24px;
+            border-left: 5px solid #e67e22;
+            padding-left: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #e67e22;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .radio-group input {
+            width: auto;
+        }
+
+        .btn-submit {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 60px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #1da851;
+            transform: scale(1.02);
+        }
+
+        .cookie-bar {
+            background: #f1f3f5;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #6c757d;
+            text-align: center;
+        }
+
+        .cookie-bar button {
+            background: #e67e22;
+            color: white;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-left: 10px;
+            cursor: pointer;
         }
 
         .card {
@@ -286,6 +387,13 @@
             .beneficios-grid {
                 flex-direction: column;
             }
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .form-card {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -308,7 +416,7 @@
                 <span class="security-badge">🔒 100% seguro</span>
             </div>
             <p style="font-size:0.9rem; color:#6c757d;">Você será redirecionado para o formulário</p>
-            <a href="https://formulariocarteirinha.online/" target="_blank" class="btn-primary btn-form" style="display: inline-block; text-decoration: none;">📝 SOLICITAR AGORA POR FORMULÁRIO →</a>
+            <a href="#formulario" class="btn-primary btn-form" style="display: inline-block; text-decoration: none;">📝 SOLICITAR AGORA POR FORMULÁRIO →</a>
         </div>
 
         <!-- INFORMAÇÕES DO FORMULÁRIO E PRAZOS -->
@@ -472,7 +580,7 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">Como fazer carteira do idoso?</div>
-                <div class="faq-answer">Pelo formulário online: https://formulariocarteirinha.online/</div>
+                <div class="faq-answer">Preencha o formulário abaixo e envie pelo WhatsApp.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">Quanto tempo demora para ficar pronta?</div>
@@ -488,9 +596,61 @@
             </div>
         </div>
 
-        <!-- BOTÃO FINAL -->
-        <div style="text-align: center; margin: 20px 0;">
-            <a href="https://formulariocarteirinha.online/" target="_blank" class="btn-primary btn-form" style="display: inline-block; text-decoration: none; font-size: 1.1rem;">📝 SOLICITAR AGORA PELO FORMULÁRIO →</a>
+        <!-- ============================================ -->
+        <!-- FORMULÁRIO ADICIONADO NO FINAL DA PÁGINA -->
+        <!-- ============================================ -->
+        <div class="form-card" id="formulario">
+            <h2>📋 Formulário de Cadastro</h2>
+            
+            <div class="form-group">
+                <label>1. Nome Completo *</label>
+                <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+            </div>
+
+            <div class="form-group">
+                <label>2. Endereço de E-mail (Opcional)</label>
+                <input type="email" id="email" placeholder="seu@email.com">
+            </div>
+
+            <div class="form-group">
+                <label>3. Número de WhatsApp *</label>
+                <input type="tel" id="whatsapp" placeholder="(14) 99673-1350" required>
+            </div>
+
+            <div class="form-group">
+                <label>4. Tem interesse em adquirir? *</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="interesse" value="✅ Sim, tenho interesse"> ✅ Sim, tenho interesse</label>
+                    <label><input type="radio" name="interesse" value="❌ Não tenho interesse"> ❌ Não tenho interesse</label>
+                    <label><input type="radio" name="interesse" value="🤔 Talvez / Estou pensando"> 🤔 Talvez / Estou pensando</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>5. Já adquiriu alguma vez a carteirinha de idoso? *</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="jaadquiriu" value="Sim"> Sim</label>
+                    <label><input type="radio" name="jaadquiriu" value="Não"> Não</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>6. Qual é a sua idade? *</label>
+                <select id="idade">
+                    <option value="">Selecione sua faixa etária</option>
+                    <option value="Menos de 60 anos">Menos de 60 anos</option>
+                    <option value="60 a 69 anos">60 a 69 anos</option>
+                    <option value="70 a 79 anos">70 a 79 anos</option>
+                    <option value="80 anos ou mais">80 anos ou mais</option>
+                </select>
+            </div>
+
+            <button class="btn-submit" id="btnEnviar">📱 Enviar para o WhatsApp</button>
+
+            <div class="cookie-bar">
+                🍪 Nós usamos cookies para personalizar sua experiência. Você pode alterar suas preferências a qualquer momento, mas saiba que bloquear alguns cookies pode afetar sua experiência e nossos serviços. Saiba mais em nossa Política de Cookies.
+                <button id="btnAceitarCookies">Aceitar</button>
+            </div>
         </div>
 
         <div class="disclaimer">
@@ -500,14 +660,91 @@
         </div>
 
         <footer>
-            <p>- Conteúdo educativo sobre Carteira do Idoso | Solicitação via formulário online</p>
+            <p>- Conteúdo educativo sobre Carteira do Idoso | Solicitação via WhatsApp</p>
         </footer>
     </div>
 
     <script>
-        // ============================================
-        // CONTADOR DINÂMICO DE PESSOAS ONLINE
-        // ============================================
+        // Número do WhatsApp para onde os dados serão enviados
+        // ALTERE AQUI PARA O SEU NÚMERO COM DDD E PAÍS (55 para Brasil)
+        const NUMERO_WHATSAPP = "55149996731350"; // Exemplo: (14) 99673-1350
+
+        // Função para limpar o número do WhatsApp (deixar só números)
+        function limparNumeroWhatsApp(numero) {
+            return numero.replace(/\D/g, '');
+        }
+
+        // Função para enviar os dados via WhatsApp
+        function enviarParaWhatsApp() {
+            // Capturar valores
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const interesse = document.querySelector('input[name="interesse"]:checked');
+            const jaAdquiriu = document.querySelector('input[name="jaadquiriu"]:checked');
+            const idade = document.getElementById('idade').value;
+
+            // Validações
+            if (nome === "") {
+                alert("⚠️ Por favor, preencha o Nome Completo.");
+                document.getElementById('nome').focus();
+                return false;
+            }
+
+            if (whatsapp === "") {
+                alert("⚠️ Por favor, preencha o Número de WhatsApp.");
+                document.getElementById('whatsapp').focus();
+                return false;
+            }
+
+            if (!interesse) {
+                alert("⚠️ Por favor, selecione se tem interesse em adquirir a carteirinha.");
+                return false;
+            }
+
+            if (!jaAdquiriu) {
+                alert("⚠️ Por favor, informe se já adquiriu a carteirinha antes.");
+                return false;
+            }
+
+            if (idade === "") {
+                alert("⚠️ Por favor, selecione sua faixa etária.");
+                document.getElementById('idade').focus();
+                return false;
+            }
+
+            // Montar mensagem para o WhatsApp
+            let mensagem = "📋 *NOVO PEDIDO - CARTEIRA DO IDOSO* 📋%0A%0A";
+            mensagem += `👤 *Nome:* ${nome}%0A`;
+            mensagem += `📧 *E-mail:* ${email || "Não informado"}%0A`;
+            mensagem += `📱 *WhatsApp:* ${whatsapp}%0A`;
+            mensagem += `✅ *Interesse:* ${interesse.value}%0A`;
+            mensagem += `🆔 *Já adquiriu antes:* ${jaAdquiriu.value}%0A`;
+            mensagem += `🎂 *Faixa etária:* ${idade}%0A`;
+            mensagem += `%0A_📅 Solicitação enviada em: ${new Date().toLocaleString('pt-BR')}_`;
+
+            // Criar link do WhatsApp
+            const linkWhatsApp = `https://wa.me/${NUMERO_WHATSAPP}?text=${mensagem}`;
+            
+            // Abrir o WhatsApp em nova aba
+            window.open(linkWhatsApp, '_blank');
+            
+            // Opcional: mostrar mensagem de sucesso
+            alert("✅ Redirecionando para o WhatsApp! Envie a mensagem para concluir seu cadastro.");
+            
+            return true;
+        }
+
+        // Botão enviar
+        document.getElementById('btnEnviar').addEventListener('click', enviarParaWhatsApp);
+
+        // Botão Aceitar Cookies
+        document.getElementById('btnAceitarCookies').addEventListener('click', function() {
+            document.querySelector('.cookie-bar').style.display = 'none';
+            alert("✅ Cookies aceitos! Sua experiência será personalizada.");
+        });
+
+        // Contador dinâmico
         let pessoasOnline = 921;
         const contadorElement = document.getElementById('contadorOnline');
         
