@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CredFácil — Crédito empresarial para comerciantes</title>
+<meta name="description" content="Crédito empresarial para MEI, ME e EPP. Simule online, aprovação em até 24h e parcelas diárias compatíveis com o seu faturamento." />
+<meta property="og:title" content="CredFácil — Crédito empresarial para comerciantes" />
+<meta property="og:description" content="Crédito empresarial para MEI, ME e EPP. Simule online e receba em conta." />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --brand: #1f6f3d;
+    --brand-dark: #0f3a23;
+    --gold: #c79a4a;
+    --primary: #1f6f3d;
+    --primary-foreground: #ffffff;
+    --secondary: #f4f1ea;
+    --background: #ffffff;
+    --foreground: #1a1a1a;
+    --card: #ffffff;
+    --muted: #6b6b6b;
+    --border: #e5e3dd;
+    --gradient-brand: linear-gradient(135deg, #1f6f3d, #0f3a23);
+    --shadow-elegant: 0 10px 30px rgba(15,58,35,.18);
+    --shadow-card: 0 12px 40px rgba(0,0,0,.08);
+    --shadow-gold: 0 10px 30px rgba(199,154,74,.35);
+  }
+  html,body{background:var(--background);color:var(--foreground);font-family:'Inter',sans-serif;}
+  .font-display{font-family:'Fraunces',serif;}
+  .text-primary{color:var(--primary);}
+  .text-primary-foreground{color:var(--primary-foreground);}
+  .text-foreground{color:var(--foreground);}
+  .text-muted-foreground{color:var(--muted);}
+  .bg-background{background:var(--background);}
+  .bg-card{background:var(--card);}
+  .bg-secondary{background:var(--secondary);}
+  .border-border{border-color:var(--border);}
+  .hover\:text-primary:hover{color:var(--primary);}
+  .hover\:border-primary:hover{border-color:var(--primary);}
+  .focus\:border-primary:focus{border-color:var(--primary);}
+  input[type=range]{accent-color:var(--primary);}
+  .shine{position:relative;overflow:hidden;}
+  .shine::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.25) 50%,transparent 70%);transform:translateX(-100%);transition:transform .8s;}
+  .shine:hover::after{transform:translateX(100%);}
+  .lift{transition:transform .25s ease, box-shadow .25s ease;}
+  .lift:hover{transform:translateY(-2px);}
+  .animate-fade-in{animation:fade .5s ease both;}
+  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  .spinner{border:4px solid #e5e3dd;border-top-color:var(--brand);border-radius:9999px;width:48px;height:48px;animation:spin 1s linear infinite;margin:0 auto;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .grain{background-image:radial-gradient(rgba(0,0,0,.025) 1px,transparent 1px);background-size:3px 3px;}
+</style>
+</head>
+<body class="bg-background text-foreground">
+
+<!-- Top bar -->
+<div class="border-b border-border" style="background:var(--brand-dark);color:#e8efe8;">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-2 text-xs">
+    <div class="flex items-center gap-2"><span style="color:var(--gold)">🔒</span> Ambiente seguro · Dados protegidos</div>
+    <div class="hidden sm:flex items-center gap-2"><span style="color:var(--gold)">📞</span> Atendimento exclusivo a comerciantes</div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="border-b border-border bg-background">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+    <a href="/" class="flex items-center gap-3">
+      <div class="grid h-10 w-10 place-items-center rounded-md font-display text-xl font-bold text-primary-foreground" style="background:var(--brand)">C</div>
+      <div class="leading-tight">
+        <div class="font-display text-lg" style="color:var(--brand-dark)">CredFácil</div>
+        <div class="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Crédito empresarial</div>
+      </div>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm">
+      <a href="#simulador" class="text-foreground hover:text-primary transition-colors">Simulação</a>
+      <a href="#sobre" class="text-foreground hover:text-primary transition-colors">Sobre</a>
+    </nav>
+    <a id="app-link-top" href="#" class="inline-flex items-center gap-2 rounded-md px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-primary-foreground" style="background:var(--gradient-brand);box-shadow:var(--shadow-elegant)">⬇ Baixar app</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative border-b border-border grain overflow-hidden">
+  <div class="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 lg:grid-cols-[1.1fr_1fr] lg:py-24">
+    <div>
+      <div class="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground">
+        <span class="h-1.5 w-1.5 rounded-full" style="background:var(--gold)"></span> Exclusivo MEI · ME · EPP
+      </div>
+      <h1 class="mt-6 font-display text-5xl leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl" style="color:var(--brand-dark)">
+        Crédito empresarial para <em class="font-display italic" style="color:#b88a33">comerciantes</em> que querem crescer.
+      </h1>
+      <p class="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+        Soluções financeiras desenhadas para o ritmo do seu comércio: análise transparente, aprovação rápida e parcelas diárias compatíveis com o seu faturamento.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <button type="button" onclick="openLead()" class="shine lift inline-flex items-center gap-2 rounded-xl px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-primary-foreground" style="background:var(--gradient-brand);box-shadow:var(--shadow-elegant)">🧮 Simular Empréstimo</button>
+        <a id="app-link-hero" href="#" class="lift inline-flex items-center gap-2 rounded-xl border border-border bg-card px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-foreground hover:border-primary hover:text-primary transition-colors">⬇ Baixar App</a>
+      </div>
+      <dl class="mt-12 grid grid-cols-3 gap-6 border-t border-border pt-8">
+        <div><dt class="font-display text-3xl tracking-tight sm:text-4xl" style="color:var(--brand-dark)">R$ 50k</dt><dd class="mt-1 text-xs uppercase tracking-[0.15em] text-muted-foreground">Limite máximo</dd></div>
+        <div><dt class="font-display text-3xl tracking-tight sm:text-4xl" style="color:var(--brand-dark)">24h</dt><dd class="mt-1 text-xs uppercase tracking-[0.15em] text-muted-foreground">Análise</dd></div>
+        <div><dt class="font-display text-3xl tracking-tight sm:text-4xl" style="color:var(--brand-dark)">100%</dt><dd class="mt-1 text-xs uppercase tracking-[0.15em] text-muted-foreground">Online</dd></div>
+      </dl>
+    </div>
+    <div class="relative">
+      <img src="merchant.jpg" alt="Comerciante" class="aspect-[4/5] w-full rounded-2xl object-cover" style="box-shadow:var(--shadow-card)" />
+    </div>
+  </div>
+</section>
+
+<!-- Diferenciais -->
+<section id="sobre" class="border-b border-border bg-card">
+  <div class="mx-auto max-w-6xl px-5 py-16">
+    <div class="max-w-2xl">
+      <div class="text-[11px] font-medium uppercase tracking-[0.22em] text-primary">Nossos diferenciais</div>
+      <h2 class="mt-3 font-display text-3xl tracking-tight sm:text-4xl" style="color:var(--brand-dark)">Crédito construído para o comércio brasileiro.</h2>
+    </div>
+    <div class="mt-10 grid gap-6 sm:grid-cols-3">
+      <div class="lift rounded-2xl border border-border bg-card p-7">
+        <div class="grid h-12 w-12 place-items-center rounded-xl text-white" style="background:var(--gradient-brand);box-shadow:var(--shadow-elegant)">💵</div>
+        <h3 class="mt-5 font-display text-xl tracking-tight" style="color:var(--brand-dark)">Crédito rápido</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted-foreground">Valor liberado diretamente na conta após a aprovação.</p>
+      </div>
+      <div class="lift rounded-2xl border border-border bg-card p-7">
+        <div class="grid h-12 w-12 place-items-center rounded-xl text-white" style="background:var(--gradient-brand);box-shadow:var(--shadow-elegant)">💼</div>
+        <h3 class="mt-5 font-display text-xl tracking-tight" style="color:var(--brand-dark)">Para todos os comerciantes</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted-foreground">Soluções para MEI, ME e EPP de todos os segmentos.</p>
+      </div>
+      <div class="lift rounded-2xl border border-border bg-card p-7">
+        <div class="grid h-12 w-12 place-items-center rounded-xl text-white" style="background:var(--gradient-brand);box-shadow:var(--shadow-elegant)">🛡️</div>
+        <h3 class="mt-5 font-display text-xl tracking-tight" style="color:var(--brand-dark)">100% seguro</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted-foreground">Plataforma criptografada, sem burocracia desnecessária.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Simulador -->
+<section id="simulador" class="border-b border-border" style="background:var(--secondary)">
+  <div class="mx-auto grid max-w-6xl gap-12 px-5 py-16 lg:grid-cols-[1fr_1.1fr] lg:py-20">
+    <div>
+      <div class="text-[11px] font-medium uppercase tracking-[0.22em] text-primary">Simulação</div>
+      <h2 class="mt-3 font-display text-4xl leading-tight tracking-tight sm:text-5xl" style="color:var(--brand-dark)">Simule seu empréstimo com transparência.</h2>
+      <p class="mt-5 max-w-md leading-relaxed text-muted-foreground">Escolha o valor e o prazo. Em segundos você visualiza a parcela diária estimada e segue para a análise de crédito sem compromisso.</p>
+      <ul class="mt-8 space-y-3 text-sm">
+        <li class="flex items-center gap-3 text-foreground"><span class="text-primary">⏱</span> Resposta em até 24 horas úteis</li>
+        <li class="flex items-center gap-3 text-foreground"><span class="text-primary">🛡</span> Consulta gratuita e sigilosa</li>
+        <li class="flex items-center gap-3 text-foreground"><span class="text-primary">✅</span> Sem taxa de adesão</li>
+      </ul>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-7 sm:p-9" style="box-shadow:var(--shadow-card)">
+      <div class="mb-7">
+        <div class="flex items-baseline justify-between gap-3">
+          <label class="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Valor desejado</label>
+          <span class="font-display text-3xl tracking-tight sm:text-4xl" style="color:var(--brand-dark)">R$ <span id="valor-disp">15.000</span></span>
+        </div>
+        <input id="valor" type="range" min="500" max="50000" step="500" value="15000" class="mt-4 w-full" />
+        <div class="mt-1 flex justify-between text-[11px] text-muted-foreground"><span>R$ 500</span><span>R$ 50.000</span></div>
+      </div>
+      <div class="mb-7">
+        <div class="flex items-baseline justify-between gap-3">
+          <label class="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Parcelas diárias</label>
+          <span class="font-display text-3xl tracking-tight sm:text-4xl" style="color:var(--brand-dark)"><span id="parc-disp">24</span>x</span>
+        </div>
+        <input id="parcelas" type="range" min="5" max="60" step="1" value="24" class="mt-4 w-full" />
+        <div class="mt-1 flex justify-between text-[11px] text-muted-foreground"><span>5x</span><span>60x</span></div>
+      </div>
+      <div class="flex items-end justify-between gap-3 rounded-md border border-border p-5" style="background:var(--secondary)">
+        <div>
+          <div class="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Parcela estimada</div>
+          <div class="text-[10px] text-muted-foreground">valor por dia · sujeito à análise</div>
+        </div>
+        <div class="font-display text-2xl tracking-tight sm:text-3xl" style="color:var(--brand-dark)">R$ <span id="parc-valor">762,5</span></div>
+      </div>
+      <button type="button" onclick="openLead()" class="shine lift mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl px-6 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-primary-foreground" style="background:var(--gradient-brand);box-shadow:var(--shadow-elegant)">🧮 Simular Empréstimo</button>
+      <p class="mt-3 text-center text-[11px] text-muted-foreground">Ao continuar você concorda em fornecer seus dados para análise de crédito.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Pre-aprovado (hidden until form submit) -->
+<section id="pre-aprovado" class="border-b border-border bg-background animate-fade-in" style="display:none">
+  <div class="mx-auto max-w-3xl px-5 py-16">
+    <div class="overflow-hidden rounded-2xl border border-border bg-card" style="box-shadow:var(--shadow-card)">
+      <div class="relative px-8 py-10 text-center" style="background:var(--brand-dark)">
+        <div class="mx-auto grid h-14 w-14 place-items-center rounded-full border" style="border-color:var(--gold);background:rgba(199,154,74,.15)"><span style="color:var(--gold);font-size:22px">✓</span></div>
+        <div class="mt-4 text-[11px] font-semibold uppercase tracking-[0.28em]" style="color:var(--gold)">Análise concluída</div>
+        <h2 class="mt-3 font-display text-4xl tracking-tight text-primary-foreground sm:text-5xl">Empréstimo pré-aprovado</h2>
+        <p class="mx-auto mt-3 max-w-md text-sm" style="color:#dfe7df">Parabéns! Seu perfil foi analisado e o crédito está disponível para contratação.</p>
+      </div>
+      <div class="px-6 py-8 sm:px-10">
+        <div class="grid grid-cols-3 gap-3 sm:gap-4">
+          <div class="rounded-xl border border-border bg-card px-3 py-5 text-center"><div class="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Valor liberado</div><div class="mt-2 font-display text-2xl tracking-tight sm:text-3xl" style="color:var(--brand-dark)">R$ <span id="pa-valor">15.000</span></div></div>
+          <div class="rounded-xl border border-border bg-card px-3 py-5 text-center"><div class="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Parcelas</div><div class="mt-2 font-display text-2xl tracking-tight sm:text-3xl" style="color:var(--brand-dark)"><span id="pa-parc">24</span>x</div></div>
+          <div class="rounded-xl border border-border bg-card px-3 py-5 text-center"><div class="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Por dia</div><div class="mt-2 font-display text-2xl tracking-tight sm:text-3xl" style="color:var(--brand-dark)">R$ <span id="pa-dia">762,5</span></div></div>
+        </div>
+        <p class="mt-6 text-center text-sm text-muted-foreground">Para concluir a contratação, baixe o aplicativo <strong style="color:var(--brand-dark)">CredFácil</strong> e finalize sua solicitação em poucos minutos.</p>
+        <a id="app-link-pa" href="#" class="shine lift mt-6 inline-flex w-full items-center justify-center gap-3 rounded-xl px-7 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-primary-foreground" style="background:var(--gradient-brand);box-shadow:var(--shadow-elegant)">⬇ Baixar App e Receber →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="relative overflow-hidden border-y border-border px-5 py-20" style="background:var(--brand-dark)">
+  <div class="relative mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-[1.4fr_1fr]">
+    <div>
+      <div class="text-[11px] font-medium uppercase tracking-[0.22em]" style="color:var(--gold)">Próximo passo</div>
+      <h2 class="mt-3 font-display text-4xl tracking-tight text-primary-foreground sm:text-5xl">Baixe o app e contrate em minutos.</h2>
+      <p class="mt-4 max-w-xl text-sm leading-relaxed" style="color:#dfe7df">Crie sua conta, conclua a análise e receba o valor direto na conta. Suporte humanizado para comerciantes.</p>
+    </div>
+    <a id="app-link-cta" href="#" class="shine lift inline-flex items-center justify-center gap-3 rounded-xl px-7 py-4 text-sm font-semibold uppercase tracking-[0.16em]" style="background:var(--gold);color:var(--brand-dark);box-shadow:var(--shadow-gold)">⬇ Baixar App CredFácil</a>
+  </div>
+</section>
+
+<footer class="bg-background px-5 py-6 text-xs text-muted-foreground">
+  <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 sm:flex-row">
+    <span>© <span id="year"></span> CredFácil · Crédito empresarial para comerciantes</span>
+    <span class="inline-flex items-center gap-2">🔒 Site seguro · LGPD</span>
+  </div>
+</footer>
+
+<!-- Lead modal -->
+<div id="lead-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4" onclick="if(event.target===this)closeLead()">
+  <div class="w-full max-w-2xl overflow-hidden rounded-md bg-card" style="box-shadow:var(--shadow-card)">
+    <div class="flex items-start justify-between gap-4 px-7 py-6" style="background:var(--brand-dark)">
+      <div>
+        <div class="text-[11px] font-medium uppercase tracking-[0.22em]" style="color:var(--gold)">Análise de crédito</div>
+        <h3 class="mt-1 font-display text-3xl tracking-tight text-primary-foreground">Informações do solicitante</h3>
+      </div>
+      <button type="button" onclick="closeLead()" class="text-white/80 hover:text-white" aria-label="Fechar">✕</button>
+    </div>
+    <form id="lead-form" class="px-7 py-6">
+      <p class="text-sm text-muted-foreground">Preencha as informações abaixo para concluir a simulação de <strong>R$ <span id="m-valor">15.000</span></strong> em <strong><span id="m-parc">24</span>x</strong>. Seus dados são tratados conforme a LGPD.</p>
+      <div class="mt-5 flex items-center gap-3">
+        <span style="color:var(--brand)">👤</span>
+        <span class="text-[11px] font-semibold uppercase tracking-[0.22em]" style="color:var(--brand-dark)">Dados pessoais</span>
+        <span class="h-px flex-1 bg-border"></span>
+      </div>
+      <div class="mt-5 space-y-4">
+        <div>
+          <label class="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Nome completo</label>
+          <input id="i-nome" required placeholder="Seu nome" class="mt-2 w-full rounded-md border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary" />
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label class="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">CPF</label>
+            <input id="i-cpf" required placeholder="000.000.000-00" inputmode="numeric" class="mt-2 w-full rounded-md border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary" />
+          </div>
+          <div>
+            <label class="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Telefone / WhatsApp</label>
+            <input id="i-tel" required placeholder="(00) 00000-0000" inputmode="tel" class="mt-2 w-full rounded-md border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary" />
+          </div>
+        </div>
+        <div>
+          <label class="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">E-mail</label>
+          <input id="i-email" required type="email" placeholder="voce@email.com" class="mt-2 w-full rounded-md border border-border bg-background px-4 py-3 text-sm outline-none focus:border-primary" />
+        </div>
+      </div>
+      <button type="submit" class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md px-6 py-4 text-sm font-semibold uppercase tracking-[0.16em] text-primary-foreground hover:opacity-95 transition-opacity" style="background:var(--brand-dark);box-shadow:var(--shadow-elegant)">✓ Enviar e simular</button>
+      <p class="mt-3 flex items-center justify-center gap-2 text-center text-[11px] text-muted-foreground">🔒 Conexão segura · Seus dados não são compartilhados.</p>
+    </form>
+  </div>
+</div>
+
+<!-- Analyzing overlay -->
+<div id="analyzing" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 p-4">
+  <div class="w-full max-w-sm rounded-2xl bg-card p-8 text-center" style="box-shadow:var(--shadow-card)">
+    <div class="spinner"></div>
+    <div class="mt-5 font-display text-xl tracking-tight" style="color:var(--brand-dark)">Analisando seu perfil…</div>
+    <p class="mt-2 text-sm text-muted-foreground">Estamos consultando os dados. Aguarde alguns segundos.</p>
+  </div>
+</div>
+
+<script>
+  const APP_URL = "https://meusapp.site/aplicativo/cred-facil?t=b942f5c1f9773fec0a29";
+  const WHATSAPP_NUMBER = "5519988883843";
+  document.getElementById('year').textContent = new Date().getFullYear();
+  ['app-link-top','app-link-hero','app-link-pa','app-link-cta'].forEach(id => document.getElementById(id).href = APP_URL);
+
+  const fmt = n => n.toLocaleString('pt-BR',{minimumFractionDigits:0,maximumFractionDigits:2});
+  const valorEl = document.getElementById('valor');
+  const parcEl = document.getElementById('parcelas');
+  function recalc(){
+    const v = +valorEl.value, p = +parcEl.value;
+    const parcela = (v*1.22)/p;
+    document.getElementById('valor-disp').textContent = fmt(v);
+    document.getElementById('parc-disp').textContent = p;
+    document.getElementById('parc-valor').textContent = fmt(parcela);
+    document.getElementById('m-valor').textContent = fmt(v);
+    document.getElementById('m-parc').textContent = p;
+  }
+  valorEl.addEventListener('input',recalc);
+  parcEl.addEventListener('input',recalc);
+  recalc();
+
+  function openLead(){ document.getElementById('lead-modal').style.display='flex'; }
+  function closeLead(){ document.getElementById('lead-modal').style.display='none'; }
+
+  const maskCPF = v => v.replace(/\D/g,'').slice(0,11).replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2');
+  const maskTel = v => { const d=v.replace(/\D/g,'').slice(0,11); if(d.length<=10) return d.replace(/(\d{2})(\d{4})(\d{0,4}).*/,'($1) $2-$3').replace(/-$/,''); return d.replace(/(\d{2})(\d{5})(\d{0,4}).*/,'($1) $2-$3').replace(/-$/,''); };
+  document.getElementById('i-cpf').addEventListener('input',e=>e.target.value=maskCPF(e.target.value));
+  document.getElementById('i-tel').addEventListener('input',e=>e.target.value=maskTel(e.target.value));
+
+  document.getElementById('lead-form').addEventListener('submit',e=>{
+    e.preventDefault();
+    const v=+valorEl.value, p=+parcEl.value, parcela=(v*1.22)/p;
+    const nome=document.getElementById('i-nome').value;
+    const cpf=document.getElementById('i-cpf').value;
+    const tel=document.getElementById('i-tel').value;
+    const email=document.getElementById('i-email').value;
+    const text = `*Nova simulação de empréstimo - CredFácil*\n\n*Valor:* R$ ${fmt(v)}\n*Parcelas:* ${p}x de R$ ${fmt(parcela)} (diárias)\n\n*Dados do solicitante:*\nNome: ${nome}\nCPF: ${cpf}\nTelefone: ${tel}\nE-mail: ${email}`;
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`,'_blank','noopener,noreferrer');
+    closeLead();
+    document.getElementById('analyzing').style.display='flex';
+    const delay = Math.floor(Math.random()*5000)+5000;
+    setTimeout(()=>{
+      document.getElementById('analyzing').style.display='none';
+      document.getElementById('pa-valor').textContent = fmt(v);
+      document.getElementById('pa-parc').textContent = p;
+      document.getElementById('pa-dia').textContent = fmt(parcela);
+      const pa = document.getElementById('pre-aprovado');
+      pa.style.display='block';
+      pa.scrollIntoView({behavior:'smooth',block:'start'});
+    }, delay);
+  });
+</script>
+</body>
+</html>
